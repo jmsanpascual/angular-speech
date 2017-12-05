@@ -1,0 +1,19 @@
+.custom-inline-group {
+  display: flex;
+}
+
+.custom-inline-group .input-group {
+  width: 100%;
+}
+
+.custom-inline-group-item {
+  flex: 50%;
+}
+
+.pad-left {
+  padding-left: 10px;
+}
+
+.pad-right {
+  padding-right: 10px;
+}

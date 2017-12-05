@@ -1,0 +1,9 @@
+<tabset [vertical]="true" type="pills">
+  <tab *ngFor="let speech of speeches; trackBy:speech?.id"
+    [heading]="speech.title"
+    (select)="select(speech)">
+    <ng-template tabHeading>
+        <span class="glyphicon glyphicon-trash pull-right"></span>
+    </ng-template>
+  </tab>
+</tabset>
