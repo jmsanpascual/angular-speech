@@ -34,6 +34,10 @@ export class SpeechListComponent implements OnInit {
     this.getSpeeches();
   }
 
+  trackById(speech: Speech): number {
+    return speech.id;
+  }
+
   onSpeechSearch(speeches: Speech[]): void {
     this.speeches = speeches;
     this.onSelected.emit(speeches[0]);

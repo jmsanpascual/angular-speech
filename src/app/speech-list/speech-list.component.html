@@ -1,7 +1,7 @@
 <div class="speech-list-container">
   <app-speech-search (onSearch)="onSpeechSearch($event)"></app-speech-search>
   <tabset #tabs [vertical]="true" type="pills">
-    <tab #tab *ngFor="let speech of speeches; trackBy:speech?.id"
+    <tab #tab *ngFor="let speech of speeches; trackBy: trackById"
       [heading]="speech.title"
       (select)="select(speech)">
       <ng-template tabHeading>
