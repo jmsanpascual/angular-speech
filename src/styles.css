@@ -8,3 +8,17 @@ body {
   padding-bottom: 20px;
   background-color: whitesmoke !important;
 }
+
+ul {
+  height: 85%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 991px) {
+  ul {
+    height: 85%;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+}

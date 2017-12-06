@@ -1,0 +1,12 @@
+<div id="search-component">
+  <div class="input-group">
+    <input #searchBox id="search-box" class="form-control"
+      placeholder="Search for title, author or keywords..."
+      (keyup)="search(searchBox.value)" />
+    <span class="input-group-addon">
+        <span title="Search"
+          [ngClass]="{ 'glyphicon glyphicon-search': !isSearching, 'fa fa-spinner fa-spin': isSearching }">
+        </span>
+    </span>
+  </div>
+</div>

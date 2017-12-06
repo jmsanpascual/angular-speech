@@ -7,7 +7,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
 
 import { SelectModule } from "ng2-select";
+import { AlertModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap';
 import { TabsModule } from 'ngx-bootstrap';
 
 import { SpeechService } from './services/speech.service';
@@ -15,12 +17,14 @@ import { SpeechService } from './services/speech.service';
 import { AppComponent } from './app.component';
 import { SpeechEditorComponent } from './speech-editor/speech-editor.component';
 import { SpeechListComponent } from './speech-list/speech-list.component';
+import { SpeechSearchComponent } from './speech-search/speech-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SpeechEditorComponent,
-    SpeechListComponent
+    SpeechListComponent,
+    SpeechSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import { SpeechListComponent } from './speech-list/speech-list.component';
       InMemoryDataService, { dataEncapsulation: false }
     ),
     SelectModule,
+    AlertModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    ModalModule.forRoot(),
     TabsModule.forRoot()
   ],
   providers: [SpeechService],

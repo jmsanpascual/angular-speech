@@ -1,3 +1,15 @@
+.speech-editor-container {
+  height: 100%;
+}
+
+.speech-form-container{
+  height: 82%;
+}
+
+.speech-editor-header {
+  margin: 0 !important;
+}
+
 .custom-inline-group {
   display: flex;
 }
@@ -16,4 +28,31 @@
 
 .pad-right {
   padding-right: 10px;
+}
+
+.speech-content {
+  height: 45%;
+}
+
+.speech-content > textarea {
+  height: 100%;
+  resize: none;
+}
+
+.form-actions {
+  display: flex;
+}
+
+.form-action-btns {
+  margin-right: 10px;
+}
+
+.form-actions > alert {
+  flex: 2;
+}
+
+@media screen and (max-width: 991px) {
+  .speech-editor-container {
+    padding-top: 20px;
+  }
 }

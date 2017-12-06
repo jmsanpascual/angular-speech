@@ -1,48 +1,63 @@
-<form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
-  <div class="form-inline form-group custom-inline-group">
-    <div class="form-group custom-inline-group-item pad-right">
-      <label class="sr-only" for="author">Author</label>
-      <div class="input-group">
-        <div class="input-group-addon">
-          <span class="glyphicon glyphicon-user"></span>
+<div class="speech-editor-container">
+  <h3 class="speech-editor-header" [textContent]="getSpeechEditorHeader()">
+    Speech Details
+  </h3>
+
+  <hr>
+
+  <form #form="ngForm" class="speech-form-container" (ngSubmit)="onSubmit(form.value)">
+    <div class="form-inline form-group custom-inline-group">
+      <div class="form-group custom-inline-group-item pad-right">
+        <label class="sr-only" for="author">Author</label>
+        <div class="input-group">
+          <div class="input-group-addon">
+            <span title="Author Name" class="glyphicon glyphicon-user"></span>
+          </div>
+          <input type="text" class="form-control" id="author" placeholder="Author" name="author"
+            [ngModel]="speech?.author">
         </div>
-        <input type="text" class="form-control" id="author" placeholder="Author" name="author"
-          [ngModel]="speech?.author">
+      </div>
+
+      <div class="form-group custom-inline-group-item pad-left">
+        <label class="sr-only" for="date">Date</label>
+        <div class="input-group">
+          <div class="input-group-addon">
+            <span title="Date" class="glyphicon glyphicon-calendar"></span>
+          </div>
+          <input type="text" class="form-control" id="date" placeholder="Date" name="date"
+            #dp="bsDatepicker" bsDatepicker [bsValue]="speech?.date" ngModel
+            [bsConfig]="{ containerClass: 'theme-blue' }">
+        </div>
       </div>
     </div>
 
-    <div class="form-group custom-inline-group-item pad-left">
-      <label class="sr-only" for="date">Date</label>
-      <div class="input-group">
-        <div class="input-group-addon">
-          <span class="glyphicon glyphicon-calendar"></span>
-        </div>
-        <input type="text" class="form-control" id="date" placeholder="Date" name="date"
-          #dp="bsDatepicker" bsDatepicker [bsValue]="speech?.date" ngModel
-          [bsConfig]="{ containerClass: 'theme-blue' }">
-      </div>
+    <div class="form-group">
+      <ng-select #select
+        [multiple]="true"
+        [active]="speech?.keywords"
+        (typed)="storedKeyword($event)"
+        (keydown.enter)="addKeyword()"
+        placeholder="Keywords">
+      </ng-select>
     </div>
-  </div>
 
-  <div class="form-group">
-    <ng-select #select
-      [multiple]="true"
-      [active]="speech.keywords"
-      (typed)="storedKeyword($event)"
-      (keydown.enter)="addKeyword()"
-      placeholder="Keywords">
-    </ng-select>
-  </div>
+    <div class="form-group speech-content">
+      <textarea class="form-control" name="content" placeholder="Speech Content"
+        [ngModel]="speech?.content">
+      </textarea>
+    </div>
 
-  <div class="form-group">
-    <textarea class="form-control" rows="5" style="resize:none;" name="content"
-      [ngModel]="speech?.content">
-    </textarea>
-  </div>
-
-  <div class="form-group">
-    <button class="btn btn-success" type="submit">
-      Save
-    </button>
-  </div>
-</form>
+    <div class="form-actions">
+      <div class="form-action-btns">
+        <button class="btn btn-success" type="submit" [disabled]="isBtnSaveDisabled">
+          {{ isBtnSaveDisabled ? '' : 'Save' }}
+          <span class="fa fa-spinner fa-spin" *ngIf="isBtnSaveDisabled"></span>
+        </button>
+      </div>
+      <alert type="success" dismissOnTimeout="5000"
+        *ngIf="showAlert" (onClose)="onAlertClosed()">
+        <strong>{{ alertTitle  }}</strong> has been successfully {{ actionMsg }}!
+      </alert>
+    </div>
+  </form>
+</div>

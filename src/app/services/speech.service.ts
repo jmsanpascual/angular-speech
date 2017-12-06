@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
+import { Subject }    from 'rxjs/Subject';
 import { of } from 'rxjs/observable/of';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { Speech } from '../models/speech';
 
@@ -14,24 +15,28 @@ const httpOptions = {
 @Injectable()
 export class SpeechService {
 
+  private speechAddedSource = new Subject<Speech>();
   private speechUrl = 'api/speeches';
 
-  constructor(private http: HttpClient) { }
+  public speechAdded$: Observable<Speech>;
+
+  constructor(private http: HttpClient) {
+    this.speechAdded$ = this.speechAddedSource.asObservable();
+  }
 
   getSpeeches(): Observable<Speech[]> {
     return this.http.get<Speech[]>(this.speechUrl)
     .pipe(
-      tap((speeches: Speech[]) => {
-        console.log(`Fetched speeches `);
-        return speeches.map(speech => speech.date = new Date(speech.date));
-      })
+      tap((speeches: Speech[]) => console.log(`Fetched speeches `))
     );
   }
 
   addSpeech (speech: Speech): Observable<Speech> {
     return this.http.post<Speech>(this.speechUrl, speech, httpOptions).pipe(
-      tap((speech: Speech) => console.log(`Added speech w/ id=${speech.id}`))
-    );
+      tap((speech: Speech) => {
+        console.log(`Added speech w/ id=${speech.id}`)
+        this.speechAddedSource.next(speech)
+    }));
   }
 
   updateSpeech(speech: Speech): Observable<any> {
@@ -50,12 +55,19 @@ export class SpeechService {
   }
 
   searchSpeeches(term: string): Observable<Speech[]> {
-    if (!term.trim()) {
-      // If not search term, return empty speech array.
-      return of([]);
-    }
+    return this.http.get<Speech[]>(this.speechUrl).pipe(
+      map(speeches => {
+        return speeches.filter(speech => {
+          let title = speech.title.toLowerCase();
+          let author = speech.author.toLowerCase();
+          let keywords = speech.keywords || [];
+          term = term.toLowerCase();
 
-    return this.http.get<Speech[]>(`api/speeches/?name=${term}`).pipe(
+          return (title.indexOf(term) !== -1) ||
+            (author.indexOf(term) !== -1) ||
+            (keywords.includes(term));
+        });
+      }),
       tap(_ => console.log(`Found speeches matching "${term}"`))
     );
   }
