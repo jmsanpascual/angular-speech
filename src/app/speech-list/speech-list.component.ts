@@ -40,7 +40,11 @@ export class SpeechListComponent implements OnInit {
 
   onSpeechSearch(speeches: Speech[]): void {
     this.speeches = speeches;
-    this.onSelected.emit(speeches[0]);
+    this.onSelected.emit(this.speeches[0]);
+    let tabs = this.tabSet.tabs;
+    setTimeout(() => {
+      if (tabs[0]) tabs[0].active = true;
+    });
   }
 
   getSpeeches(): void {
@@ -64,6 +68,7 @@ export class SpeechListComponent implements OnInit {
       this.modalRef.hide();
       this.speeches = this.speeches.filter(speech => speech.id !== this.speechId);
       this.onDeleted.emit(this.speechId);
+      this.tabSet.tabs.map((tab) => tab.active = false);
     });
   }
 

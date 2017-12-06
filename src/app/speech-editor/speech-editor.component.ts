@@ -25,7 +25,7 @@ export class SpeechEditorComponent implements OnChanges {
 
   constructor(private speechService: SpeechService) {}
 
-  ngOnChanges() {
+  ngOnChanges(changes: any) {
     this.showAlert = false;
     this.clearKeywords();
     if (this.speech) this.speech.date = new Date(this.speech.date);
