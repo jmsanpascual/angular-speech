@@ -58,8 +58,8 @@ export class SpeechService {
     return this.http.get<Speech[]>(this.speechUrl).pipe(
       map(speeches => {
         return speeches.filter(speech => {
-          let title = speech.title.toLowerCase();
-          let author = speech.author.toLowerCase();
+          let title = (speech.title || '').toLowerCase();
+          let author = (speech.author || '').toLowerCase();
           let keywords = speech.keywords || [];
           term = term.toLowerCase();
 
