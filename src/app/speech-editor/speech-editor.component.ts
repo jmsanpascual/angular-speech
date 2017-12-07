@@ -41,13 +41,17 @@ export class SpeechEditorComponent implements OnChanges {
     this.keyword = keyword;
   }
 
-  addKeyword(): void {
-    let keyword = this.keyword;
-    let keywords = this.select.active.map(keyword => keyword.text);
+  addKeyword($event): void {
+    if (!this.keyword) return;
 
-    if (keyword && !keywords.includes(keyword)) {
-      this.select.active.push({ text: keyword, id: keyword });
-      this.clearKeywords();
+    if ($event.keyCode === 9 || $event.keyCode === 13) {
+      let keyword = this.keyword;
+      let keywords = this.select.active.map(keyword => keyword.text);
+
+      if (keyword && !keywords.includes(keyword)) {
+        this.select.active.push({ text: keyword, id: keyword });
+        this.clearKeywords();
+      }
     }
   }
 

@@ -36,7 +36,7 @@
         [multiple]="true"
         [active]="speech?.keywords"
         (typed)="storedKeyword($event)"
-        (keydown.enter)="addKeyword()"
+        (keydown)="addKeyword($event)"
         placeholder="Keywords">
       </ng-select>
     </div>
