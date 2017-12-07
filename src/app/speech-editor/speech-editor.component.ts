@@ -44,7 +44,7 @@ export class SpeechEditorComponent implements OnChanges {
   addKeyword($event): void {
     if (!this.keyword) return;
 
-    if ($event.keyCode === 9 || $event.keyCode === 13) {
+    if ($event.keyCode === 13) {
       let keyword = this.keyword;
       let keywords = this.select.active.map(keyword => keyword.text);
 
