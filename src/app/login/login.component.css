@@ -1,7 +1,7 @@
 .login-bg {
   position: relative;
   height: 100%;
-  width: 100
+  width: 100%;
 }
 
 .login-wrapper {
@@ -50,4 +50,15 @@
   margin-top: 20px;
   border: 0;
   font-weight: bold;
+}
+
+@media screen and (max-width: 767px) {
+  .login-bg {
+    position: absolute;
+    background: #a7cfdf;
+    background: -moz-linear-gradient(top, #a7cfdf 0%, #23538a 100%);
+    background: -webkit-linear-gradient(top, #a7cfdf 0%,#23538a 100%);
+    background: linear-gradient(to bottom, #a7cfdf 0%,#23538a 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', endColorstr='#23538a',GradientType=0 );
+  }
 }
