@@ -30,16 +30,15 @@
   color: red !important;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 767px) {
   .speech-list-container {
-    border: 0;
     padding: 0;
     padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(12, 13, 13, 0.5);
   }
 
   :host ::ng-deep .nav {
-    height: 85%;
+    height: 50vh;
     overflow: hidden;
     overflow-y: auto;
   }

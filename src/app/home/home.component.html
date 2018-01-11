@@ -8,7 +8,7 @@
   </div>
 
   <div class="row content">
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-5">
       <app-speech-list #speechList
         (onNewSpeech)="newSpeechForm()"
         (onSelected)="onSpeechSelected($event)"
@@ -16,7 +16,7 @@
       </app-speech-list>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8 col-sm-7">
       <app-speech-editor [speech]="speech"></app-speech-editor>
     </div>
   </div>

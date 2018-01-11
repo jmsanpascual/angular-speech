@@ -66,8 +66,8 @@
   box-shadow: none !important;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 767px) {
   .speech-editor-container {
-    padding-top: 20px;
+    padding: 20px 0;
   }
 }
