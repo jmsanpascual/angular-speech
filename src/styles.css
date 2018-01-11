@@ -44,3 +44,19 @@ body {
   color: #fff !important;
   background-color: rgba(12, 13, 13, 0.8);
 }
+
+@media screen and (max-width: 760px) {
+  html, body {
+    height: auto;
+  }
+
+  body {
+    background-color: #fff !important;
+  }
+
+  ul {
+    height: 23vh;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+}
