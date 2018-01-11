@@ -1,0 +1,25 @@
+.container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.home-title {
+  letter-spacing: 10px;
+  font-weight: bold;
+}
+
+.content {
+  height: 100%;
+  margin-top: 25px;
+}
+
+[class*="col-"] {
+  height: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .container {
+    height: 100%;
+    overflow: auto;
+  }
+}

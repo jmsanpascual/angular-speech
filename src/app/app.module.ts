@@ -12,9 +12,15 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
 import { TabsModule } from 'ngx-bootstrap';
 
+import { AppRoutingModule } from './app-routing.module';
+
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './services/auth.service';
 import { SpeechService } from './services/speech.service';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { SpeechEditorComponent } from './speech-editor/speech-editor.component';
 import { SpeechListComponent } from './speech-list/speech-list.component';
 import { SpeechSearchComponent } from './speech-search/speech-search.component';
@@ -22,11 +28,14 @@ import { SpeechSearchComponent } from './speech-search/speech-search.component';
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    LoginComponent,
     SpeechEditorComponent,
     SpeechListComponent,
     SpeechSearchComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -39,7 +48,7 @@ import { SpeechSearchComponent } from './speech-search/speech-search.component';
     ModalModule.forRoot(),
     TabsModule.forRoot()
   ],
-  providers: [SpeechService],
+  providers: [AuthGuard, AuthService, SpeechService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

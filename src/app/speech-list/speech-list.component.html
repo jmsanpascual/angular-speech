@@ -1,5 +1,8 @@
 <div class="speech-list-container">
-  <app-speech-search (onSearch)="onSpeechSearch($event)"></app-speech-search>
+  <app-speech-search
+    (onNewSpeech)="newSpeech()"
+    (onSearch)="onSpeechSearch($event)">
+  </app-speech-search>
   <tabset #tabs [vertical]="true" type="pills">
     <tab #tab *ngFor="let speech of speeches; trackBy: trackById"
       [heading]="speech.title"

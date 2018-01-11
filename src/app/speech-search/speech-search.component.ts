@@ -24,12 +24,9 @@ export class SpeechSearchComponent implements OnInit {
   speeches$: Observable<Speech[]>;
   private searchTerms = new Subject<string>();
   @Output() onSearch = new EventEmitter<Speech[]>();
+  @Output() onNewSpeech = new EventEmitter();
 
   constructor(private speechService: SpeechService) {}
-
-  search(term: string): void {
-    this.searchTerms.next(term);
-  }
 
   ngOnInit(): void {
     this.speeches$ = this.searchTerms.pipe(
@@ -43,6 +40,14 @@ export class SpeechSearchComponent implements OnInit {
       this.isSearching = false;
       this.onSearch.emit(speeches);
     });
+  }
+
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
+
+  newSpeech(): void {
+    this.onNewSpeech.emit();
   }
 
 }

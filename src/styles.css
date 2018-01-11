@@ -4,21 +4,43 @@ html, body {
 }
 
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: whitesmoke !important;
+  background: #a7cfdf;
+  background: -moz-linear-gradient(top, #a7cfdf 0%, #23538a 100%);
+  background: -webkit-linear-gradient(top, #a7cfdf 0%,#23538a 100%);
+  background: linear-gradient(to bottom, #a7cfdf 0%,#23538a 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', endColorstr='#23538a',GradientType=0 );
 }
 
-ul {
-  height: 85%;
-  overflow: hidden;
-  overflow-y: auto;
+.form-control {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  outline-color: #000 !important;
+  color: #111 !important;
+  border: 1px solid rgba(12, 13, 13, 0.5) !important;
 }
 
-@media screen and (max-width: 991px) {
-  ul {
-    height: 85%;
-    overflow: hidden;
-    overflow-y: auto;
-  }
+.form-control:focus {
+  box-shadow: 0 0 5px rgba(12, 13, 13, 1) !important;
+}
+
+.form-control::placeholder {
+  color: #333 !important;
+}
+
+.input-group-addon {
+  color: #fff !important;
+  background-color: rgba(12, 13, 13, 0.5) !important;
+  border: 0 !important;
+}
+
+.btn-dark {
+  color: #fff;
+  background-color: rgba(12, 13, 13, 0.5);
+  border: 0;
+}
+
+.btn-dark:focus,
+.btn-dark:hover {
+  color: #fff !important;
+  background-color: rgba(12, 13, 13, 0.8);
 }

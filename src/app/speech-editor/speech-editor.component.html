@@ -3,8 +3,6 @@
     Speech Details
   </h3>
 
-  <hr>
-
   <form #form="ngForm" class="speech-form-container" (ngSubmit)="onSubmit(form.value)">
     <div class="form-inline form-group custom-inline-group">
       <div class="form-group custom-inline-group-item pad-right">
@@ -49,12 +47,12 @@
 
     <div class="form-actions">
       <div class="form-action-btns">
-        <button class="btn btn-success" type="submit" [disabled]="isBtnSaveDisabled">
+        <button class="btn btn-dark" type="submit" [disabled]="isBtnSaveDisabled">
           {{ isBtnSaveDisabled ? '' : 'Save' }}
           <span class="fa fa-spinner fa-spin" *ngIf="isBtnSaveDisabled"></span>
         </button>
       </div>
-      <alert type="success" dismissOnTimeout="5000"
+      <alert type="info" dismissOnTimeout="5000"
         *ngIf="showAlert" (onClose)="onAlertClosed()">
         <strong>{{ alertTitle  }}</strong> has been successfully {{ actionMsg }}!
       </alert>

@@ -4,9 +4,15 @@
       placeholder="Search for title, author or keywords..."
       (keyup)="search(searchBox.value)" />
     <span class="input-group-addon">
-        <span title="Search"
-          [ngClass]="{ 'glyphicon glyphicon-search': !isSearching, 'fa fa-spinner fa-spin': isSearching }">
+      <span title="Search"
+        [ngClass]="{ 'glyphicon glyphicon-search': !isSearching, 'fa fa-spinner fa-spin': isSearching }">
+      </span>
+    </span>
+    <span class="input-group-btn">
+      <button class="btn btn-dark" type="button" (click)="newSpeech()">
+        <span title="Search" class="glyphicon glyphicon-plus">
         </span>
+      </button>
     </span>
   </div>
 </div>

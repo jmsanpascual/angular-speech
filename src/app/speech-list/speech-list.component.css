@@ -2,7 +2,28 @@
   height: 100%;
   padding-right: 30px;
   border: 0;
-  border-right: 1px solid #eee;
+}
+
+:host ::ng-deep .nav {
+  height: 70%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+:host ::ng-deep .nav > li > a:focus,
+:host ::ng-deep .nav > li > a:hover {
+  background-color: rgba(204, 204, 204, 0.5);
+}
+
+:host ::ng-deep .nav-pills > li.active > a,
+:host ::ng-deep .nav-pills > li.active > a:focus,
+:host ::ng-deep .nav-pills > li.active > a:hover {
+  color: #fff;
+  background-color: rgba(12, 13, 13, 0.5);
+}
+
+:host ::ng-deep .nav-link {
+  color: #000;
 }
 
 .hover:hover {
@@ -15,5 +36,11 @@
     padding: 0;
     padding-bottom: 20px;
     border-bottom: 1px solid #eee;
+  }
+
+  :host ::ng-deep .nav {
+    height: 85%;
+    overflow: hidden;
+    overflow-y: auto;
   }
 }

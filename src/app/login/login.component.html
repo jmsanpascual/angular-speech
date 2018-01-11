@@ -1,0 +1,16 @@
+<div class="login-bg">
+  <div class="login-wrapper">
+    <div class="login-container">
+      <h1 class="login-title">NG SPEECH</h1>
+
+      <form class="login-details" (submit)="login($event)">
+        <h5 class="login-details-header">LOG IN</h5>
+        <input type="text" class="form-control login-input" placeholder="Username"
+          name="username" [(ngModel)]="credentials.username" />
+        <input type="password" class="form-control login-input" placeholder="Password"
+          name="password" [(ngModel)]="credentials.password" />
+        <button type="submit" class="btn btn-dark btn-block login-btn">Let's Go</button>
+      </form>
+    </div>
+  </div>
+</div>

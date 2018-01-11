@@ -20,6 +20,7 @@ export class SpeechListComponent implements OnInit {
   @Input() speeches: Speech[];
   @Output() onSelected = new EventEmitter<Speech>();
   @Output() onDeleted = new EventEmitter<number>();
+  @Output() onNewSpeech = new EventEmitter();
   @ViewChild('tabs') tabSet: TabsetComponent;
 
   constructor(
@@ -56,6 +57,10 @@ export class SpeechListComponent implements OnInit {
 
   select(speech: Speech): void {
     this.onSelected.emit(speech);
+  }
+
+  newSpeech(): void {
+    this.onNewSpeech.emit();
   }
 
   deleteSpeech(speech: Speech, template: TemplateRef<any>): void {

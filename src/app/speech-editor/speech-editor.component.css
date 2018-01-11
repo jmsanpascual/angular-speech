@@ -3,7 +3,8 @@
 }
 
 .speech-form-container{
-  height: 82%;
+  height: 95%;
+  margin-top: 23px;
 }
 
 .speech-editor-header {
@@ -49,6 +50,20 @@
 
 .form-actions > alert {
   flex: 2;
+}
+
+:host ::ng-deep .btn-default {
+  color: #fff;
+  background-color: rgba(12, 13, 13, 0.5);
+  border: 0;
+}
+
+:host ::ng-deep .ui-select-search {
+  border: 0 !important;
+}
+
+:host ::ng-deep .ui-select-search:focus {
+  box-shadow: none !important;
 }
 
 @media screen and (max-width: 991px) {

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="home-title">
+        NG SPEECH
+      </h1>
+    </div>
+  </div>
+
+  <div class="row content">
+    <div class="col-md-4">
+      <app-speech-list #speechList
+        (onNewSpeech)="newSpeechForm()"
+        (onSelected)="onSpeechSelected($event)"
+        (onDeleted)="onSpeechDeleted($event)">
+      </app-speech-list>
+    </div>
+
+    <div class="col-md-8">
+      <app-speech-editor [speech]="speech"></app-speech-editor>
+    </div>
+  </div>
+</div>
