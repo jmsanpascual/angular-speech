@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   credentials: any = {};
   returnUrl: string;
+  showAlert: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,14 +30,21 @@ export class LoginComponent implements OnInit {
 
   login(event: any): void {
     event.preventDefault();
+    this.showAlert = false;
+
     this.authService.login(this.credentials.username, this.credentials.password)
         .subscribe(
           user => {
               if (!user) {
+                this.showAlert = true;
                 return;
               }
               this.router.navigate([this.returnUrl]);
           }
         );
-    }
+  }
+
+  onAlertClosed(): void {
+    this.showAlert = false;
+  }
 }

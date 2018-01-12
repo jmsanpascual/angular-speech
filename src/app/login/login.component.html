@@ -12,5 +12,10 @@
         <button type="submit" class="btn btn-dark btn-block login-btn">Let's Go</button>
       </form>
     </div>
+
+    <alert type="danger" dismissOnTimeout="5000"
+      *ngIf="showAlert" (onClose)="onAlertClosed()">
+      Credentials doesn't match our records.
+    </alert>
   </div>
 </div>
