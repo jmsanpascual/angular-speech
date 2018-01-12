@@ -1,6 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { SpeechListComponent } from '../speech-list/speech-list.component';
 
+import { AuthService } from '../services/auth.service';
 import { Speech } from '../models/speech';
 
 @Component({
@@ -13,6 +16,11 @@ export class HomeComponent {
 
     speech: Speech;
     @ViewChild('speechList') speechList: SpeechListComponent;
+
+    constructor(
+      private router: Router,
+      private authService: AuthService
+    ) { }
 
     newSpeechForm(): void {
       let tabs = this.speechList.tabSet.tabs;
@@ -28,6 +36,11 @@ export class HomeComponent {
       if (this.speech.id == speechId) {
         this.newSpeechInstance();
       }
+    }
+
+    logout(): void {
+      this.authService.logout();
+      this.router.navigate(['/login']);
     }
 
     private newSpeechInstance(): void {
